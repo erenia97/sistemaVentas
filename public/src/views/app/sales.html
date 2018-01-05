@@ -1,0 +1,181 @@
+<div class="page" ng-show="nit_section">
+	<div class="page-wrap">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default table-responsive panel-hovered mb20">
+					<div class="panel-body">
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label>NIT</label>
+								<div class="input-group">
+									<input type="text" class="form-control" ng-model="customer.nit" my-enter="checkCustomer(customer)" placeholder="Para una venta de consumidor final debe escribir CF luego presionar enter --- Para una venta con NIT debe escribir el NIT luego presionar enter" autofocus required>
+									<span class="input-group-addon ion ion-android-search"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page page-invoice" ng-show="invoice_section">
+	<div class="page-wrap">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Invoice Start -->
+				<div class="invoice-wrap">
+					<div class="clearfix invoice-subhead mb20">
+						<div class="group clearfix left">
+							<p class="text-bold mb5">Venta actual</p>
+							<p class="small">Fecha: {{ today | date : "dd/MM/yyyy" }}</p>
+						</div>
+
+						<div class="group clearfix right">
+							<a href="javascript:;" class="btn btn-info" ng-click="saveSale()" ng-disabled="enable_print"><i class="ion ion-ios-gear"></i>Generar</a>
+							<a href="javascript:;" class="btn btn-danger" ng-click="cancelSale()"><i class="ion ion-android-cancel"></i>Cancelar</a>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-sm-4">
+							<div class="ui-radio ui-radio-info">
+								<label class="ui-radio-inline">
+									<input type="radio" name="payment" ng-model="invoice.payment" value="cash">
+									<span>Efectivo</span>
+								</label>
+								<label class="ui-radio-inline">
+									<input type="radio" name="payment" ng-model="invoice.payment" value="credit_card">
+									<span>Tarjeta</span>
+								</label>
+								<label class="ui-radio-inline">
+									<input type="radio" name="payment" ng-model="invoice.payment" value="check">
+									<span>Cheque</span>
+								</label>
+								<label class="ui-radio-inline">
+									<input type="radio" name="payment" ng-model="invoice.payment" value="down_payment">
+									<span>Depósito</span>
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="ui-checkbox">
+								<label>
+									<input type="checkbox" ng-model="invoice.print" ng-checked="true">
+									<span>Imprimir</span>
+								</label>
+							</div>
+						</div>
+                        <div class="col-sm-3">
+                            <label>Seleccion vendedor:</label>
+                            <select class="form-control" ng-model="seller" ng-options="salesman.name for salesman in salesman_list track by salesman"></select>
+                        </div>
+					</div>
+					<div class="row mb20">
+						<div class="col-md-6">
+							<div class="address-wrap">
+								<div class="address-title">
+									<p class="mb5">Cliente</p>
+									<h4 class="mt0 text-bold mb0">{{ customer.name }}</h4>
+								</div>
+								<address>
+                                    <strong>NIT: </strong>{{ customer.nit }}<br>
+                                    <strong>Dirección: </strong>{{ customer.direction }}<br>
+                                    <strong>Correo electrónico: </strong>{{ customer.email }}<br>
+                                    <strong>Teléfono: </strong>{{ customer.phone }}
+								</address>
+							</div>
+							
+						</div>
+
+						<div class="col-md-6">
+							<div class="address-wrap">
+								<div class="address-title">
+									<p class="mb5">Nosotros</p>
+									<h4 class="mt0 text-bold mb0">{{ user_data.company.trade_name }}</h4>
+								</div>
+								<address>
+									<strong>{{ user_data.company.business_name }}</strong><br>
+                                    <strong>NIT: </strong>{{ user_data.company.nit }}<br>
+                                    <strong>Dirección: </strong>{{ user_data.company.direction }}<br>
+                                    <strong>Teléfono: </strong>{{ user_data.company.phone }}
+								</address>
+							</div>
+							
+						</div>
+					</div>
+                    <div class="clearfix invoice-subhead mb20">
+                        <div class="group clearfix left">
+                            <p class="text-bold mb5">Búsqueda de productos</p>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+							<input type="text" class="form-control" ng-model="product.id" ng-show="show_input">
+                            <input type="text" class="form-control" ng-model="product.internal_code" ng-show="show_input">
+                            <input type="text" class="form-control" list="product_list" ng-model="product.param" my-enter="searchProduct(product)" placeholder="Busque el producto por nombre, código de barras o código interno" />
+
+                            <datalist id="product_list">
+                                <select><option ng-repeat="opt in product_list" label="{{opt.description}} ({{opt.bar_code}})">{{opt.internal_code}}</option></select>
+                            </datalist>
+                        </div>
+						<div class="col-sm-2">
+							<div class="input-group">
+								<span class="input-group-addon">Existencia</span>
+								<input type="number" class="form-control" min="1" ng-model="product.stock" placeholder="0">
+							</div>
+						</div>
+                        <div class="col-sm-2">
+							<div class="input-group">
+								<span class="input-group-addon">Cantidad</span>
+								<input type="number" class="form-control" min="1" ng-model="product.quantity" placeholder="0" focus-me="focus">
+							</div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="input-group">
+                                <span class="input-group-addon">Q.</span>
+                                <input type="number" class="form-control" min="1" ng-model="product.price" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <a href="javascript:;" class="btn btn-success" ng-click="addProduct(product)" ng-disabled="enable_add_product"><i class="ion ion-plus"></i>Agregar producto</a>
+                        </div>
+                    </div>
+					<!-- invoice table -->
+					<table class="table table-bordered invoice-table mb20">
+						<thead>
+							<tr>
+								<th>Código</th>
+								<th>Descripción</th>
+								<th>Cantidad</th>
+								<th>Precio unitario</th>
+								<th>Subtotal</th>
+							</tr>
+						</thead>
+
+						<tbody>
+                            <tr ng-repeat="data in products">
+                                <td>{{ data.internal_code }}</td>
+                                <td>{{ data.description }}</td>
+                                <td>{{ data.quantity }}</td>
+                                <td>Q. {{ data.unit_price }}</td>
+                                <td>Q. {{ data.subtotal }}</td>
+                            </tr>
+						</tbody>
+					</table>
+					<!-- #end invoice table -->
+					<div class="clearfix text-right total-sum mb20">
+						<h3 class="text-uppercase text-bold">Total</h3>
+						<h4 class="sum">Q. {{ total | number: "2" }}</h4>
+					</div>
+				</div>
+			</div> <!-- Invoice End -->
+		</div> <!-- #end row -->
+
+	</div> <!-- #end page-wrap -->
+</div>
+<div class="toast toast-{{positionModel}}">
+    <alert ng-repeat="toast in toasts" type="{{toast.type}}" close="closeAlert($index)" class="toast-{{toast.anim}}">
+        <div ng-bind-html="toast.msg"></div>
+    </alert>
+</div>

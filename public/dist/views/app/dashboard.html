@@ -1,0 +1,168 @@
+<div class="page page-dashboard" ng-controller="DashboardCtrl">
+	
+	<div class="page-wrap">
+
+		<div class="row">
+			<!-- dashboard header -->
+			<div class="col-md-12">
+				<div class="dash-head clearfix mt15 mb20">
+					<div class="left">
+						<h4 class="mb5 text-light"><strong>Bienvenido: </strong>{{ user_data.name }}</h4>
+						<p class="small"><strong>Empresa: </strong>{{ user_data.company.trade_name }}</p>
+					</div>
+					<div class="right mt10">
+					</div>
+				</div>
+			</div>
+		</div> <!-- #end row -->
+
+		<!-- mini boxes -->
+		<div class="row" ng-show="show_user">
+			<div class="col-md-6 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-primary text-bold">{{ data_user.total_sales_month }}</h4>
+								<h5 class="text-light mb0">Ventas realizadas del mes</h5>
+							</div>
+							<div class="right ion ion-clipboard icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-primary">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-success text-bold">{{ data_user.total_sales_day }}</h4>
+								<h5 class="text-light mb0">Ventas realizadas del día</h5>
+							</div>
+							<div class="right ion ion-clipboard icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-success">
+					</div>
+				</div>
+			</div>
+		</div> <!-- #end row -->
+		<div class="row" ng-show="show_admin">
+			<div class="col-md-3 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-primary text-bold">{{ data_admin.total_sales_month }}</h4>
+								<h5 class="text-light mb0">Ventas realizadas del mes</h5>
+							</div>
+							<div class="right ion ion-clipboard icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-primary">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-success text-bold">{{ data_admin.total_sales_day }}</h4>
+								<h5 class="text-light mb0">Ventas realizadas del día</h5>
+							</div>
+							<div class="right ion ion-clipboard icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-success">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-info text-bold">{{ data_admin.total_products }}</h4>
+								<h5 class="text-light mb0">Total de productos</h5>
+							</div>
+							<div class="right ion ion-cube icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-info">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-pink text-bold">{{ data_admin.total_salesman }}</h4>
+								<h5 class="text-light mb0">Total de vendedores</h5>
+							</div>
+							<div class="right ion ion-ios-briefcase icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-pink">
+					</div>
+				</div>
+			</div>
+		</div> <!-- #end row -->
+		<div class="row" ng-show="show_root">
+			<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-primary text-bold">{{ data_root.total_companies }}</h4>
+								<h5 class="text-light mb0">Total de empresas</h5>
+							</div>
+							<div class="right ion ion-ios-home icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-primary">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-success text-bold">{{ data_root.total_users }}</h4>
+								<h5 class="text-light mb0">Total de usuarios</h5>
+							</div>
+							<div class="right ion ion-person icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-success">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default mb20 mini-box panel-hovered">
+					<div class="panel-body">
+						<div class="clearfix">
+							<div class="info left">
+								<h4 class="mt0 text-info text-bold">{{ data_root.total_customers }}</h4>
+								<h5 class="text-light mb0">Total de clientes registrados</h5>
+							</div>
+							<div class="right ion ion-person-stalker icon"></div>
+						</div>
+					</div>
+					<div class="panel-footer clearfix panel-footer-sm panel-footer-info">
+					</div>
+				</div>
+			</div>
+		</div> <!-- #end row -->
+	</div> <!-- #end page-wrap -->
+</div>
