@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <!-- <base href="/"> -->
 
-        <title>PDV365</title>
+        <title>Punto de venta JESE</title>
 
         <!-- Icons -->
         <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
@@ -24,12 +24,12 @@
         <!-- Match Media polyfill for IE9 -->
         <!--[if IE 9]> <script src="scripts/ie/matchMedia.js"></script>  <![endif]-->
     </head>
-    <body ng-app="login" ng-controller="LoginController">
+    <body ng-app="login" ng-controller="LoginController" style="background-image: url(images/asd.jpg); background-repeat: no-repeat; ">
         <div class="page page-auth">
             <div class="auth-container">
                 <div class="form-head mb20">
-                    <h1 class="site-logo h2 mb5 mt5 text-center text-uppercase text-bold"><a href="/">PDV365</a></h1>
-                    <h5 class="text-normal h5 text-center">Iniciar sesión en Dashboard</h5>
+                    <h1 class="site-logo h2 mb5 mt5 text-center text-uppercase text-bold"><a href="/">Punto de venta JESE</a></h1>
+                    <h5 class="text-normal h5 text-center">Iniciar sesión</h5>
                 </div>
                 <div class="form-container">
                     <form class="form-horizontal" action="javascript:;">
@@ -43,12 +43,9 @@
                         </md-input-container>
                         <div class="btn-group btn-group-justified mb15">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-success" ng-click="signIn(data)">Ingresar</button>
+                                <button type="submit" class="btn btn-success" ng-click="signIn(data)" style="background-color: #c58dd2; border-color: #c58dd2">Ingresar</button>
                             </div>
-                        </div>
-                        <div class="clearfix text-center small">
-                            <p>Todos los derechos reservados - <a href="http://researchmobile.co">Research Mobile</a></p>
-                        </div>
+                        </div>  
                     </form>
                 </div>
             </div> <!-- #end signin-container -->

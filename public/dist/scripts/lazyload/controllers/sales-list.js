@@ -8,6 +8,7 @@
 
             var user_data = localStorageService.get('user_data');
             $scope.can_cancel = user_data.cancellation == 1 ? true : false;
+            console.log($scope.can_cancel);
             if (user_data.type === 'root') {
                 $window.location.href = './#/404';
             }
@@ -39,6 +40,7 @@
                 var params = { company_id:user_data.company_id };
                 SalesListService.index(params).then(function(response) {
                     $scope.datas = response.data.records;
+                    console.log($scope.datas);
                     $scope.search();
                     $scope.select($scope.currentPage);
                 });
