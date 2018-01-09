@@ -144,6 +144,7 @@ class ProductController extends Controller
                     $product->internal_code = $request->input('internal_code', $product->internal_code);
                     $product->bar_code      = $request->input('bar_code') != null ? $request->input('bar_code') : '';
                     $product->price_sale    = $request->input('price_sale', $product->price_sale);
+                     $product->stock        = $request->input('stock', $product->stock);
                     $product->commission    = $commission;
                     $product->save();
 
